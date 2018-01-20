@@ -1,11 +1,11 @@
 import sys
-
+from termcolor import colored
 # functions
 # Deposit Function
 def deposit():
     outfile = open("statement.txt","a")
     total_amount = 0
-    date = input("Enter today's Date (DD/MM/YYYY): \n")
+    date = input(colored("Enter today's Date (DD/MM/YYYY): \n","green"))
     outfile.write("\n\nEntry Date : " + str(date) + "\n")
 
     while(1):
@@ -13,10 +13,10 @@ def deposit():
         print "Enter details : \n"
         s = sys.stdin.readline()
 
-        outfile.write("Deposit : "str(amount) + " \nReason : " + s + "\n")
+        outfile.write("Deposit : " + str(amount) + " \nReason : " + s + "\n")
         total_amount += amount
 
-        print "\n////////      Deposit Successful      ////////\n"
+        print colored("\n////////      Deposit Successful      ////////\n","green")
         
         print "\nDo you have other entries?\n\nEnter 1 for termination , any other key to continue\n\nEnter your choice : \n"
         st = int(input())
@@ -32,7 +32,7 @@ def deposit():
     n = int(sr)
     n = n + total_amount
     outfile.write(str(n))
-    print "\n\n////////      Thanks for using our services      ////////\n\n"
+    print colored("\n\n////////      Thanks for using our services      ////////\n\n","green")
     outfile.close()
 
 
@@ -42,7 +42,7 @@ def deposit():
 def withdraw():
     outfile = open("statement.txt","a")
     total_amount = 0
-    date = input("Enter today's Date (DD/MM/YYYY): \n")
+    date = input(colored("Enter today's Date (DD/MM/YYYY): \n","green"))
     outfile.write("\n\nEntry Date : " + str(date) + "\n")
 
     while(1):
@@ -52,7 +52,7 @@ def withdraw():
 
         outfile.write("Withdraw : " + str(amount) + " \nReason : " + s + "\n")
         total_amount += amount
-        print "\n////////      Withdraw Successful      ////////\n"
+        print colored("\n////////      Withdraw Successful      ////////\n","green")
         print "\nDo you have other entries?\n\nEnter 1 for termination , any other key to continue\n\nEnter your choice : \n"
         st = int(input())
         if (st == 1 | st == 1):
@@ -68,7 +68,7 @@ def withdraw():
     n = int(sr)
     n = n - total_amount
     outfile.write(str(n))
-    print "\n////////      Thanks for using our services      ////////\n"
+    print colored("\n////////      Thanks for using our services      ////////\n","green")
     outfile.close()
 
 
@@ -78,7 +78,8 @@ def withdraw():
 def balance():
     outfile = open("balance.txt","r")
     print "\nYour current balance is : " + outfile.read()
-    print "\n////////      Thanks for using our services      ////////\n"
+    #print colored("\nHello\n","red")
+    print colored("\n////////      Thanks for using our services      ////////\n","green")
     outfile.close()
 
 
@@ -96,4 +97,5 @@ while(1):
     else:
         break
 
+print colored("\n\n       Thanks for using. Visit Again       \n\n","yellow")
 # End of main code
