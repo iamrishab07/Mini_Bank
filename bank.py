@@ -1,11 +1,15 @@
+# import modules
 import sys
 from termcolor import colored
-# functions
+
 # Deposit Function
 def deposit():
     outfile = open("statement.txt","a")
     total_amount = 0
-    date = input(colored("Enter today's Date (DD/MM/YYYY): \n","green"))
+    print colored("Enter today's Date (DD/MM/YYYY): \n","green")
+    
+    date = sys.stdin.readline()
+    
     outfile.write("\n\nEntry Date : " + str(date) + "\n")
 
     while(1):
@@ -24,16 +28,16 @@ def deposit():
             break
     
     outfile.close()
-    outfile = open("balance.txt","r")
-    sr = outfile.read()
+    outfile2 = open("balance.txt","r")
+    sr = outfile2.read()
 
-    outfile.close()
-    outfile = open("balance.txt","w")
+    outfile2.close()
+    outfile3 = open("balance.txt","w")
     n = int(sr)
     n = n + total_amount
-    outfile.write(str(n))
+    outfile3.write(str(n))
     print colored("\n\n////////      Thanks for using our services      ////////\n\n","green")
-    outfile.close()
+    outfile3.close()
 
 
 
@@ -42,7 +46,10 @@ def deposit():
 def withdraw():
     outfile = open("statement.txt","a")
     total_amount = 0
-    date = input(colored("Enter today's Date (DD/MM/YYYY): \n","green"))
+    
+    print colored("Enter today's Date (DD/MM/YYYY): \n","green")
+    date = sys.stdin.readline()
+    
     outfile.write("\n\nEntry Date : " + str(date) + "\n")
 
     while(1):
@@ -78,7 +85,6 @@ def withdraw():
 def balance():
     outfile = open("balance.txt","r")
     print "\nYour current balance is : " + outfile.read()
-    #print colored("\nHello\n","red")
     print colored("\n////////      Thanks for using our services      ////////\n","green")
     outfile.close()
 
